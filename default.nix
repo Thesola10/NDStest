@@ -1,13 +1,15 @@
-{ pkgs, stdenv, ... }:
+{ pkgs, devkitNix, ... }:
 
-stdenv.mkDerivation {
-  name = throw "Edit `default.nix' to define package!";
+devkitNix.stdenvARM.mkDerivation rec {
+  pname = "NDStest";
+  version = "0.0.1";
 
   src = ./.;
 
-  makeFlags = [ "TARGET=" ];
+  makeFlags = [ "TARGET=${pname}" ];
 
-  nativeBuildInputs = with pkgs;
-    [
-    ];
+  installPhase = ''
+    mkdir -p $out
+    cp ${pname}.nds $out/
+  '';
 }
