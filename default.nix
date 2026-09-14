@@ -1,6 +1,6 @@
-{ pkgs, blocksdsEnv, ... }:
+{ pkgs, stdenv, blocksdsEnv, ... }:
 
-blocksdsEnv.mkDerivation rec {
+stdenv.mkDerivation rec {
   pname = "NDStest";
   version = "0.0.1";
 
@@ -12,4 +12,8 @@ blocksdsEnv.mkDerivation rec {
     mkdir -p $out
     cp ${pname}.nds $out/
   '';
+
+  WONDERFUL_TOOLCHAIN = blocksdsEnv.WONDERFUL_TOOLCHAIN;
+  BLOCKSDS            = blocksdsEnv.BLOCKSDS;
+  BLOCKSDSEXT         = blocksdsEnv.BLOCKSDSEXT;
 }

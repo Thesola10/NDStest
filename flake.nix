@@ -1,10 +1,9 @@
 { description = "A basic flake based on callPackage";
 
   inputs."nixpkgs".url = github:NixOS/nixpkgs;
-  inputs."devkitNix".url = github:bandithedoge/devkitNix;
   inputs."blocksds-nix".url = github:pgattic/blocksds-nix;
 
-  outputs = { self, nixpkgs, flake-utils, devkitNix, blocksds-nix, ... }:
+  outputs = { self, nixpkgs, flake-utils, blocksds-nix, ... }:
   flake-utils.lib.eachDefaultSystem
     (system:
     let pkgs = import nixpkgs {
