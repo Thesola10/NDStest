@@ -1,12 +1,12 @@
-{ pkgs, devkitNix, ... }:
+{ pkgs, blocksdsEnv, ... }:
 
-devkitNix.stdenvARM.mkDerivation rec {
+blocksdsEnv.mkDerivation rec {
   pname = "NDStest";
   version = "0.0.1";
 
   src = ./.;
 
-  makeFlags = [ "TARGET=${pname}" ];
+  makeFlags = [ "NAME=${pname}" ];
 
   installPhase = ''
     mkdir -p $out
